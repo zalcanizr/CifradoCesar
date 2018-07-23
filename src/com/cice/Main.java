@@ -9,7 +9,10 @@ public class Main {
 
 
         CifradoCesar cifrado=new CifradoCesar();
-
+        String cadenaCifrada = cifrado.cifrarCadena("casa",3);
+        String cadenaDescifrada=cifrado.descifrarCadena(cadenaCifrada,3);
+        System.out.println("cadena cifrada: "+cadenaCifrada);
+        System.out.println("cadena cadenaDescifrada: "+cadenaDescifrada);
 
 
     }

@@ -19,19 +19,35 @@ public class CifradoCesar {
         }
     }
 
-    public String cifrarCadena (String cadena, int posiciones){
-        String cadenaCifrada =null;
-        for (int i=0; i<cadena.length();i++){
-            cadenaCifrada+=abcdario[i+posiciones];
-        }
+    public String cifrarCadena (String cadenaDescifrada, int posiciones){
+        String cadenaCifrada ="";
+        int posicionCifrada=0;
+        for (int i=0; i<cadenaDescifrada.length();i++) {
+                char caracter = cadenaDescifrada.charAt(i);
+                for (int j = 0; j < this.abcdario.length; j++) {
+                    if (abcdario[j] == caracter) {
+                        posicionCifrada = (j + posiciones) % this.abcdario.length;
+                        cadenaCifrada += abcdario[posicionCifrada];
+                        break;
+                    }
+                }
 
+        }
         return cadenaCifrada;
     }
 
-    public String descifrarCadena (String cadena, int posiciones){
-        String cadenaDescifrada =null;
-        for (int i=0; i<cadena.length();i++){
-            cadenaDescifrada+=abcdario[i-posiciones];
+    public String descifrarCadena (String cadenaCifrada, int posiciones){
+        String cadenaDescifrada ="";
+        int posicionCifrada=0;
+        for (int i=0; i<cadenaCifrada.length();i++) {
+            char caracter = cadenaCifrada.charAt(i);
+            for (int j = 0; j < this.abcdario.length; j++) {
+                if (abcdario[j] == caracter) {
+                    posicionCifrada = (j - posiciones+this.abcdario.length) % this.abcdario.length;
+                    break;
+                }
+            }
+            cadenaDescifrada += abcdario[posicionCifrada];
         }
         return cadenaDescifrada;
     }
